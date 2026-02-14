@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Digital Time Capsule</title>
+  <style>
+    body { font-family: sans-serif; margin: 2rem; }
+    input, textarea { width: 100%; margin: 0.5rem 0; }
+    .capsule { margin: 1rem 0; padding: 1rem; border: 1px solid #eac7c7; }
+  </style>
+</head>
+<body>
+  <h1>Digital Time Capsule</h1>
+  <form action="/create" method="POST">
+    <textarea name="message" placeholder="Enter your message" required></textarea>
+    <input type="date" name="unlockDate" required />
+    <button type="submit">Save your Capsule</button>
+  </form>
+
+  <h2>Saved Capsules</h2>
+  <% capsules.forEach((c, i) => { %>
+    <div class="capsule">
+      <p>Unlock Date: <%= c.unlockDate %></p>
+      <a href="/capsule/<%= i %>">View your saved Capsule</a>
+    </div>
+  <% }) %>
+</body>
+</html>
